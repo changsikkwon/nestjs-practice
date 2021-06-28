@@ -13,13 +13,10 @@ export class User {
   id: number;
 
   @Column()
-  title: string;
+  email: string;
 
   @Column()
-  content: string;
-
-  @Column({ default: 0 })
-  view: number;
+  password: string;
 
   @CreateDateColumn()
   createdAt: Date;
