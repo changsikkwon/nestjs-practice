@@ -24,18 +24,11 @@ export class UserService {
         const user = new User();
         user.email = createUserDto.email;
         user.password = createUserDto.password;
-
-        const index = (await this.findAll()).find((cur: any) => cur.email === user.email);
-
-        if (index) {
-            throw new BadRequestException();
-        } else {
-            this.userRepository.save(user);
-            return {
-                email: user.email,
-                password: user.password,
-            };
-        }
+        this.userRepository.save(user);
+        return {
+            email: user.email,
+            password: user.password,
+        };
     }
 
     async update(updateUserDto: UpdateUserDto, id: number): Promise<any> {
